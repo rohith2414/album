@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+<div class="allBoxes">
+  @for (item of albumList; track $index) {
+    <div class="card" style="width: 18rem;">
+      <img src="{{item.cover_image}}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h3 class="card-title">{{item.title}}</h3>
+        
+        <p class="card-text">Artist:{{item.artist}}</p>
+        <p class="card-text">Genre:{{item.genre}}</p>
+        <p class="card-text">Year:{{item.release_year}}</p>
+        <p class="card-text">Rating:{{item.rating}} out of 10</p>
+        <div class="box-btns">
+          <button type="button"  (click)="editBtn(item.id)" class="btn btn-success" style="margin-right:8px;">Edit</button>
+          <button type="button" (click)="deleteBtn(item.id)" class="btn btn-danger">Delete</button>
+        </div>
+      </div>
+  </div>
+  }
+
+</div>
+<div id="editModal" class="modal">
+  <div class="modal-content">
+      <span class="close" (click)="closePopUp()" >&times;</span>
+      <h2>Edit Details</h2>
+      <form class="row g-3 needs-validation" >
+        <div class="col-md-4">
+          <label for="validationCustom01" class="form-label">Title</label>
+          <input type="text" name="title"  [(ngModel)]="formData.title" class="form-control" id="validationCustom01" required>
+          
+        </div>
+        <div class="col-md-4">
+          <label for="validationCustom02" class="form-label">Artist</label>
+          <input type="text" name="artist"  [(ngModel)]="formData.artist" class="form-control" id="validationCustom02" required>
+          
+        </div>
+        <div class="col-md-4">
+            <label for="validationCustom02" class="form-label">Genre</label>
+            <input type="text" name="genre" [(ngModel)]="formData.genre" class="form-control" id="validationCustom02" required>
+            
+          
+          </div>
+        <div class="col-md-4">
+            <label for="validationCustom02" class="form-label">Release year</label>
+            <input type="number" name="release_year"  [(ngModel)]="formData.release_year" class="form-control" id="validationCustom02">
+           
+        </div>
+        <div class="col-md-4">
+            <label for="validationCustom02" class="form-label">Rating(out of 10)</label>
+            <input type="number" name="rating"  min="0" max="10" [(ngModel)]="formData.rating" class="form-control" id="validationCustom02" >
+           
+
+        </div>
+        <div class="col-md-4">
+            <label for="validationCustom02" class="form-label">Image url</label>
+            <input type="text" name="cover_image"  class="form-control" [(ngModel)]="formData.cover_image" id="validationCustom02" required>
+           
+        </div>
+        <div class="col-12">
+          <button class="btn btn-primary" type="submit" (click)="onSubmit(formData.id)">Edit details</button>
+        </div>
+      
+    </form>
+      
+  </div>
+</div>
+
+</body>
+</html>
+

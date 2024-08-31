@@ -1,0 +1,71 @@
+<div id="liveAlertPlaceholder"></div>
+
+
+<div class="container heading">
+    <h2>Add Album</h2>
+</div>
+<div class="container add-form">
+  <form class="row g-3 needs-validation" #form="ngForm" novalidate>
+        <div class="col-md-4">
+          <label for="validationCustom01" class="form-label">Title</label>
+          <input type="text" name="title" #title="ngModel" [(ngModel)]="formData.title" class="form-control" id="validationCustom01" required>
+          <div class="text-danger">
+            @if((title.touched || title.dirty) &&title.errors?.['required']){
+              <span>This is required</span>
+            }
+          </div>
+        </div>
+        <div class="col-md-4">
+          <label for="validationCustom02" class="form-label">Artist</label>
+          <input type="text" name="artist" #artist="ngModel" [(ngModel)]="formData.artist" class="form-control" id="validationCustom02" required>
+          <div class="text-danger">
+            @if((artist.touched || artist.dirty) &&artist.errors?.['required']){
+              <span>This is required</span>
+            }
+          </div>
+        </div>
+        <div class="col-md-4">
+            <label for="validationCustom02" class="form-label">Genre</label>
+            <input type="text" name="genre" #genre="ngModel" [(ngModel)]="formData.genre" class="form-control" id="validationCustom02" required>
+            <div class="text-danger">
+              @if( (genre.touched || genre.dirty) && genre.errors?.['required']){
+                <span>This is required</span>
+              }
+            </div>
+        </div>
+        <div class="col-md-4">
+            <label for="validationCustom02" class="form-label">Release year</label>
+            <input type="number" name="release_year" #release_year="ngModel" [(ngModel)]="formData.release_year" class="form-control" id="validationCustom02">
+            <div class="text-danger">
+              @if( (release_year.touched || release_year.dirty) && release_year.errors?.['required']){
+                <span>This is required</span>
+              }
+            </div>
+        </div>
+        <div class="col-md-4">
+            <label for="validationCustom02" class="form-label">Rating(out of 10)</label>
+            <input type="number" name="rating" #rating="ngModel" min="0" max="10" [(ngModel)]="formData.rating" class="form-control" id="validationCustom02" >
+            <div class="text-danger">
+              @if((rating.touched || rating.dirty) && rating.errors?.['required']){
+                <span>This is required</span>
+              }
+            </div>
+
+        </div>
+        <div class="col-md-4">
+            <label for="validationCustom02" class="form-label">Image url</label>
+            <input type="text" name="cover_image" #cover_image="ngModel" class="form-control" [(ngModel)]="formData.cover_image" id="validationCustom02" required>
+            <div class="text-danger">
+              @if((cover_image.touched || cover_image.dirty) && cover_image.errors?.['required']){
+                <span>This is required</span>
+              }
+            </div>
+        </div>
+        <div class="col-12">
+          <button class="btn btn-primary" type="submit" [disabled]="form.invalid" (click)="onSubmit(form)" disabled="form.invalid">Submit form</button>
+        </div>
+        <div class="col-12">
+          <button class="btn btn-success" type="reset" >Reset</button>
+        </div>
+      </form>
+</div>

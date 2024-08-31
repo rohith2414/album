@@ -1,0 +1,19 @@
+<div class="container add-form">
+    <form class=" g-3 needs-validation" #form="ngForm" novalidate>
+          <div class="col-md-4">
+            <label for="validationCustom02" class="form-label">Email</label>
+            <input type="email" name="artist" #artist="ngModel" [(ngModel)]="formData.email" class="form-control" id="validationCustom02" required>
+            
+          </div><br>
+          <div class="col-md-4">
+              <label for="validationCustom02" class="form-label">Password</label>
+              <input type="password" name="genre" #genre="ngModel" [(ngModel)]="formData.password" class="form-control" id="validationCustom02" required>
+          </div><br>
+          
+          <div class="col-12">
+            <button class="btn btn-primary" type="submit" [disabled]="form.invalid" (click)="onSubmit(form)" disabled="form.invalid">Login</button>
+            <span style="margin-left:10px;">Dont have an Account ? <a routerLink="/signup">Signup</a></span>
+          </div>
+          
+        </form>
+  </div>
